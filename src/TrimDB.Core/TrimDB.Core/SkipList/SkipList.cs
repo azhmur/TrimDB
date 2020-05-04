@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
+using LocalsInit;
 
 namespace TrimDB.Core.SkipList
 {
@@ -14,6 +15,7 @@ namespace TrimDB.Core.SkipList
             _allocator = allocator;
         }
 
+        [LocalsInit(false)]
         public bool Put(ReadOnlySpan<byte> key, ReadOnlySpan<byte> value)
         {
             var valueLocation = _allocator.AllocateValue(value);

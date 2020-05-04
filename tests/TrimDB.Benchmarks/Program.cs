@@ -9,9 +9,11 @@ namespace TrimDB.Benchmarks
     {
         static void Main(string[] args)
         {
-            //var sl = new SkipListInsert();
-            //sl.GlobalSetup();
-            //await sl.MultiThreaded();
+            var sl = new SkipListInsert();
+            sl.TableHeight = 20;
+            sl.GlobalSetup();
+            sl.IterationSetup();
+            sl.NativeAllocator().GetAwaiter().GetResult();
 
             var summary = BenchmarkRunner.Run<SkipListInsert>();
 
